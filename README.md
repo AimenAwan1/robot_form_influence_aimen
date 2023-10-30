@@ -2,13 +2,22 @@
 Edited files of the julie/talos_public_ws/src/talos_moveit_config/scripts directory
 
 ### Run the expirements in simulation - Pick and place or Handover scenerio
-1. First terminal: `cd robohub/julie/talos_public_ws`
+#### Shimmer Sensor Setup
+1. First terminal: `sudo apt intall bluez`
 
+2. First terminal: `hcitool scan` #get shimmer ID
+3. First terminal: `sudo rfcomm bind 0 <shimmer ID>` #use rfcomm to check if shimmer connected successfully
+4. `sudo chmod 666 /dev/rfcomm0`
+
+#### Simulation
+1. First terminal: `cd robohub/julie/talos_public_ws`
+   
 2. First terminal: `source devel/setup.bash`
 3. First terminal: `roslaunch talos_moveit_config custom_moveit_rviz.launch` #wait for 'You can start planning now' in terminal
 4. Second terminal: `cd robohub/julie/talos_public_ws`
 5. Second terminal: `source devel/setup.bash`
 6. Second terminal: `rosrun talos_moveit_config talos_pickplace.py` or `rosrun talos_moveit_config talos_handover.py`
+
 ### Run the experiments IRL - Pick and place or Handover scenario
 #### On Windows
 1. Connect shimmer sensor, make firmware 'logging and streaming' and configure sensor
